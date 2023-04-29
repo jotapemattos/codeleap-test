@@ -1,15 +1,22 @@
-import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setName } from '../../redux/SignUp/name-slice';
+import { useCustomSelector } from '../../hooks/useAppSelector';
 
 const index = () => {
+  const user = useCustomSelector((state) => state.name.value);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [user, setUser] = useState('');
 
   const isUserValid = user.trim() !== '';
 
   const handleClick = () => {
-    setUser('');
     navigate('/posts');
+    dispatch(setName(''));
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(setName(e.target.value));
   };
 
   return (
@@ -23,7 +30,7 @@ const index = () => {
             className="outline-none border border-[#777777] rounded-lg h-8 p-2 text-sm"
             placeholder="John Doe"
             value={user}
-            onChange={(e) => setUser(e.target.value)}
+            onChange={handleChange}
           />
         </form>
         <button
