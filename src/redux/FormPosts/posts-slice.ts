@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface PostState {
+export interface PostState {
   username: string;
+  created_datetime: string;
   title: string;
   content: string;
 }
 
 const initialState: PostState = {
   username: '',
+  created_datetime: '',
   title: '',
   content: ''
 };
