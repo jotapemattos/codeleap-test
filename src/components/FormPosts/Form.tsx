@@ -35,7 +35,7 @@ const Form = () => {
       <span className="w-full flex flex-col gap-2">
         <label className="text-base text-black">Content</label>
         <textarea
-          className="outline-none border border-secondGray rounded-lg h-[74px] px-2 py-2 text-sm"
+          className="outline-none border border-secondGray rounded-lg h-[74px] px-2 py-2 text-sm resize-none"
           placeholder="Content here"
           onChange={(e) => setContent(e.target.value)}
         />
