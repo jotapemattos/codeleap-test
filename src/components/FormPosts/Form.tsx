@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useNameSelector } from '../../hooks/useAppSelector';
 import { setPost } from '../../redux/FormPosts/posts-slice';
 import { useState } from 'react';
+import { postPosts } from '../../actions/service';
 
 const Form = () => {
   const username = useNameSelector((state) => state.name.value);
@@ -10,11 +11,24 @@ const Form = () => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  const created_datetime = today.toISOString();
+
   const isPostValid = title.trim() !== '' && content.trim() !== '';
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(setPost({ username, title, content }));
+    const post = {
+      username,
+      created_datetime,
+      title,
+      content
+    };
+    dispatch(setPost(post));
+    postPosts(post);
+    setTitle('');
+    setContent('');
   };
 
   return (
@@ -30,6 +44,7 @@ const Form = () => {
           className="outline-none border border-secondGray rounded-lg h-8 p-2 text-sm"
           placeholder="Hello world"
           onChange={(e) => setTitle(e.target.value)}
+          value={title}
         />
       </span>
       <span className="w-full flex flex-col gap-2">
@@ -38,6 +53,7 @@ const Form = () => {
           className="outline-none border border-secondGray rounded-lg h-[74px] px-2 py-2 text-sm resize-none"
           placeholder="Content here"
           onChange={(e) => setContent(e.target.value)}
+          value={content}
         />
       </span>
       <button
