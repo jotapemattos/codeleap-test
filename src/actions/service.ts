@@ -22,9 +22,9 @@ export const postPosts = async (post: PostState) => {
   await axios.post('https://dev.codeleap.co.uk/careers/?format=api', post);
 };
 
-export const getPosts = async (setData: DataProps['setData']) => {
+export const getPosts = async (setData: DataProps['setData'], page: number) => {
   await axios
-    .get(`https://dev.codeleap.co.uk/careers/?format=json&limit=10&offset=0`)
+    .get(`https://dev.codeleap.co.uk/careers/?offset=${page}`)
     .then((response) => setData(response.data.results));
 };
 
