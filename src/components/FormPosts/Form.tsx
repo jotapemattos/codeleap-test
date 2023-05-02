@@ -7,7 +7,7 @@ const Form = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="gap-6 items-end w-[752px] h-[334px] border border-firstGray rounded-2xl flex flex-col px-6 py-4"
+      className="gap-6 items-end w-5/6 h-auto md:w-[540px] xl:w-[752px] xl:h-[334px] border border-firstGray rounded-2xl flex flex-col px-6 py-4"
     >
       <h1 className="text-xl font-bold w-full">What’s on your mind?</h1>
       <span className="w-full flex flex-col gap-2">

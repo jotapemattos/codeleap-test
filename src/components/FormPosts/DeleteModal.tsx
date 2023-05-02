@@ -13,7 +13,7 @@ const DeleteModal = ({ setIsOpen, id }: PostCardProps) => {
 
   return (
     <div className="w-screen h-screen fixed inset-0 bg-secondGray/80 flex items-center justify-center">
-      <main className="w-[660px] h-[146px] border border-firstGray rounded-2xl bg-white p-6 flex flex-col items-end justify-between">
+      <main className="w-[300px] min-[420px]:w-[400px] md:w-[440px] xl:w-[660px] xl:h-auto border border-firstGray rounded-2xl bg-white p-6 flex flex-col gap-4 xl:gap-10 items-center md:items-end justify-between">
         <h1 className="text-[24px] w-full font-bold">
           Are you sure you want to delete this item?
         </h1>

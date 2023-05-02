@@ -25,9 +25,9 @@ const index = () => {
   };
 
   return (
-    <div className="bg-white w-[500px] h-[205px] flex flex-col gap-6 border border-thirdGray rounded-2xl p-6">
+    <div className="bg-white w-[300px] md:w-[400px] lg:w-[450px] xl:w-[500px] xl:h-[205px] flex flex-col gap-6 border border-thirdGray rounded-2xl p-6">
       <h1 className="font-bold text-2xl">Welcome to CodeLeap network!</h1>
-      <span className="flex flex-col gap-4 items-end">
+      <span className="flex flex-col gap-4 items-center md:items-end">
         <form className="w-full flex flex-col gap-2 text-base">
           <label>Please enter your username</label>
           <input

@@ -24,7 +24,7 @@ const PostsCards = () => {
       {newData?.map((post) => (
         <div
           key={post.id}
-          className="w-[752px] h-auto border border-firstGray rounded-2xl"
+          className="w-5/6 md:w-[540px] xl:w-[752px] h-auto border border-firstGray rounded-2xl"
         >
           <header className="h-[70px] bg-mainBlue rounded-t-2xl flex items-center justify-between">
             <h1 className="text-[20px] text-white font-bold p-6">

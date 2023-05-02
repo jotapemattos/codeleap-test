@@ -23,14 +23,14 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
 
   return (
     <div className="w-screen h-screen fixed inset-0 bg-secondGray/80 flex items-center justify-center">
-      <main className="w-[660px] h-auto border border-firstGray rounded-2xl bg-white p-6 flex flex-col items-end gap-6">
+      <main className="min-[420px]:w-[400px] md:w-[400px] lg:w-[500px] xl:w-[660px] h-auto border border-firstGray rounded-2xl bg-white p-6 flex flex-col items-end gap-6">
         <h1 className="text-[24px] w-full font-bold">Edit item</h1>
         <span className="w-full flex flex-col gap-2">
           <label className="text-base text-black">Title</label>
           <input
             type="text"
             className="outline-none border border-secondGray rounded-lg h-8 p-2 text-sm"
-            placeholder="Hello world"
+            placeholder={title}
             onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
@@ -39,7 +39,7 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
           <label className="text-base text-black">Content</label>
           <textarea
             className="outline-none border border-secondGray rounded-lg h-[74px] px-2 py-2 text-sm resize-none"
-            placeholder="Content here"
+            placeholder={content}
             onChange={(e) => setContent(e.target.value)}
             value={content}
           />
