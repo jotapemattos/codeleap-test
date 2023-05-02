@@ -30,7 +30,7 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
           <input
             type="text"
             className="outline-none border border-secondGray rounded-lg h-8 p-2 text-sm"
-            placeholder={title}
+            placeholder="Hello world"
             onChange={(e) => setTitle(e.target.value)}
             value={title}
           />
@@ -39,7 +39,7 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
           <label className="text-base text-black">Content</label>
           <textarea
             className="outline-none border border-secondGray rounded-lg h-[74px] px-2 py-2 text-sm resize-none"
-            placeholder={content}
+            placeholder="Content here"
             onChange={(e) => setContent(e.target.value)}
             value={content}
           />
