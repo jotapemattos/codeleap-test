@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Data, getPosts } from '../../actions/service';
 import { useNameSelector } from '../useAppSelector';
 
