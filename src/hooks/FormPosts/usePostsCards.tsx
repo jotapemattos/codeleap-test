@@ -11,6 +11,7 @@ export const usePostsCards = () => {
   const [deleteId, setDeleteId] = useState(0);
   const [updateId, setUpdateId] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [page, setPage] = useState(0);
   const now = new Date().toISOString();
 
   if (username) {
@@ -18,7 +19,8 @@ export const usePostsCards = () => {
   }
 
   useEffect(() => {
-    getPosts(setData);
+    getPosts(setData, page);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data]);
 
   const newData = data?.map((item) => {
@@ -40,12 +42,24 @@ export const usePostsCards = () => {
     setIsDeleting(false);
   };
 
+  const handlePrev = () => {
+    setPage(page - 10);
+    window.scroll(0, 0);
+  };
+
+  const handleNext = () => {
+    setPage(page + 10);
+    window.scroll(0, 0);
+  };
   return {
     filterIdToDelete,
     filterIdToUpdate,
     setIsOpen,
     setDeleteId,
     setUpdateId,
+    handlePrev,
+    handleNext,
+    page,
     username,
     newData,
     deleteId,
