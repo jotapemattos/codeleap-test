@@ -27,8 +27,6 @@ export const useForm = () => {
     };
     dispatch(setPost(post));
     postPosts(post);
-    setTitle('');
-    setContent('');
   };
 
   return {
