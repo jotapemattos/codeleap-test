@@ -11,7 +11,6 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
   const [content, setContent] = useState('');
 
   const isPostValid = title.trim() !== '' && content.trim() !== '';
-
   const handleClick = () => {
     const post = {
       title,
@@ -47,7 +46,7 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
         <span className="flex gap-4 items-center">
           <button
             onClick={() => setIsOpen(false)}
-            className="w-[120px] h-[32px] rounded-lg border border-firstGray text-lg font-bold"
+            className="w-[120px] h-[32px] rounded-lg border border-firstGray text-lg font-bold hover:scale-95 hover:bg-black/10 transition-all duration-300"
           >
             Cancel
           </button>
@@ -56,7 +55,7 @@ const UpdateModal = ({ setIsOpen, id }: PostCardProps) => {
             className={
               !isPostValid
                 ? `w-[120px] h-[32px] rounded-lg bg-[#47B960] text-white text-lg font-bold opacity-60`
-                : `w-[120px] h-[32px] rounded-lg bg-[#47B960] text-white text-lg font-bold`
+                : `w-[120px] h-[32px] rounded-lg bg-[#47B960] text-white text-lg font-bold hover:scale-95 hover:bg-[#2d8a41] transition-all duration-300`
             }
             disabled={!isPostValid}
           >

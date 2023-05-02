@@ -20,13 +20,13 @@ const DeleteModal = ({ setIsOpen, id }: PostCardProps) => {
         <span className="flex gap-4 items-center">
           <button
             onClick={() => setIsOpen(false)}
-            className="w-[120px] h-[32px] rounded-lg border border-firstGray text-lg font-bold"
+            className="w-[120px] h-[32px] rounded-lg border border-firstGray text-lg font-bold hover:scale-95 hover:bg-black/10 transition-all duration-300"
           >
             Cancel
           </button>
           <button
             onClick={handleClick}
-            className="w-[120px] h-[32px] rounded-lg bg-[#FF5151] text-white text-lg font-bold"
+            className="w-[120px] h-[32px] rounded-lg bg-[#FF5151] text-white text-lg font-bold  hover:scale-95 hover:bg-[#b32f2f] transition-all duration-300"
           >
             Delete
           </button>
