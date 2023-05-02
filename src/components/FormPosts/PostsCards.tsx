@@ -70,10 +70,23 @@ const PostsCards = () => {
         </div>
       ))}
       <div className="w-full p-2 flex justify-center items-center gap-8">
-        <button disabled={page === 0} onClick={() => handlePrev()}>
+        <button
+          className={
+            page === 0
+              ? `w-28 h-10 p-2 rounded-xl bg-gradient-to-b from-mainBlue to-[#989FF8]`
+              : 'w-28 h-10 p-2 rounded-xl bg-gradient-to-b from-mainBlue to-[#989FF8] hover:scale-95 transition-all duration-300'
+          }
+          disabled={page === 0}
+          onClick={() => handlePrev()}
+        >
           Prev
         </button>
-        <button onClick={() => handleNext()}>Next</button>
+        <button
+          className="w-28 h-10 p-2 rounded-xl bg-gradient-to-b from-mainBlue to-[#989FF8] hover:scale-95 transition-all duration-300"
+          onClick={() => handleNext()}
+        >
+          Next
+        </button>
       </div>
     </>
   );
