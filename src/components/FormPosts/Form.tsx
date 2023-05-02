@@ -1,35 +1,8 @@
-import { useDispatch } from 'react-redux';
-import { useNameSelector } from '../../hooks/useAppSelector';
-import { setPost } from '../../redux/FormPosts/posts-slice';
-import { useState } from 'react';
-import { postPosts } from '../../actions/service';
+import { useForm } from '../../hooks/FormPosts/useForm';
 
 const Form = () => {
-  const username = useNameSelector((state) => state.name.value);
-  const dispatch = useDispatch();
-
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
-  const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
-  const created_datetime = today.toISOString();
-
-  const isPostValid = title.trim() !== '' && content.trim() !== '';
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const post = {
-      username,
-      created_datetime,
-      title,
-      content
-    };
-    dispatch(setPost(post));
-    postPosts(post);
-    setTitle('');
-    setContent('');
-  };
+  const { isPostValid, handleSubmit, title, setTitle, content, setContent } =
+    useForm();
 
   return (
     <form
