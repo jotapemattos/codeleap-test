@@ -1,29 +1,27 @@
-import { useEffect, useState } from 'react';
-import { Data, getPosts } from '../../actions/service';
-import { useNameSelector } from '../../hooks/useAppSelector';
 import trash from '../../assets/trash.svg';
 import edit from '../../assets/edit.svg';
+import DeleteModal from './DeleteModal';
+import UpdateModal from './UpdateModal';
+import { usePostsCards } from '../../hooks/FormPosts/usePostsCards';
 
 const PostsCards = () => {
-  const username = useNameSelector((state) => state.name.value);
-  const [data, setData] = useState<Data[] | null>(null);
-  const now = new Date().toISOString();
-  useEffect(() => {
-    getPosts(setData);
-  }, [data]);
-
-  const newData = data?.map((item) => {
-    const minutesAgo =
-      new Date(now).getTime() - new Date(item.created_datetime).getTime();
-    const roundedMinutesAgo = Math.floor(minutesAgo / 60000);
-    return { ...item, minutes_ago: roundedMinutesAgo };
-  });
+  const {
+    filterIdToDelete,
+    filterIdToUpdate,
+    setIsOpen,
+    username,
+    newData,
+    deleteId,
+    updateId,
+    isDeleting,
+    isOpen
+  } = usePostsCards();
   return (
     <>
       {newData?.map((post) => (
         <div
           key={post.id}
-          className="w-[752px] h-[316px] border border-firstGray rounded-2xl"
+          className="w-[752px] h-auto border border-firstGray rounded-2xl"
         >
           <header className="h-[70px] bg-mainBlue rounded-t-2xl flex items-center justify-between">
             <h1 className="text-[20px] text-white font-bold p-6">
@@ -31,14 +29,14 @@ const PostsCards = () => {
             </h1>
             {username == post.username && (
               <div className="p-6 flex items-center gap-8">
-                <button>
+                <button onClick={() => filterIdToDelete(post.id)}>
                   <img
                     src={trash}
                     alt="delete-post"
                     className="w-[31.2px] h-[30px]"
                   />
                 </button>
-                <button>
+                <button onClick={() => filterIdToUpdate(post.id)}>
                   <img
                     src={edit}
                     alt="edit-post"
@@ -46,6 +44,12 @@ const PostsCards = () => {
                   />
                 </button>
               </div>
+            )}
+            {isOpen && post.id === deleteId && isDeleting && (
+              <DeleteModal setIsOpen={setIsOpen} id={deleteId} />
+            )}
+            {isOpen && post.id === updateId && !isDeleting && (
+              <UpdateModal setIsOpen={setIsOpen} id={updateId} />
             )}
           </header>
           <main className="flex flex-col justify-center p-6 gap-4">
@@ -58,7 +62,7 @@ const PostsCards = () => {
                 <h3>{(post.minutes_ago / 60).toFixed(0)} hours ago</h3>
               )}
             </span>
-            <p className="text-lg text-black">{post.content}</p>
+            <p className="text-lg text-black break-words">{post.content}</p>
           </main>
         </div>
       ))}
