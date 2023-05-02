@@ -9,6 +9,9 @@ const PostsCards = () => {
     filterIdToDelete,
     filterIdToUpdate,
     setIsOpen,
+    handlePrev,
+    handleNext,
+    page,
     username,
     newData,
     deleteId,
@@ -66,6 +69,12 @@ const PostsCards = () => {
           </main>
         </div>
       ))}
+      <div className="w-full p-2 flex justify-center items-center gap-8">
+        <button disabled={page === 0} onClick={() => handlePrev()}>
+          Prev
+        </button>
+        <button onClick={() => handleNext()}>Next</button>
+      </div>
     </>
   );
 };
