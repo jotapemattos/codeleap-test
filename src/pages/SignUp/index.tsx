@@ -36,8 +36,8 @@ const index = () => {
           type="submit"
           className={
             !user
-              ? `w-28 h-8 rounded-lg bg-mainBlue text-white opacity-40`
-              : `w-28 h-8 rounded-lg bg-mainBlue text-white`
+              ? `w-28 h-8 rounded-lg bg-gradient-to-b from-mainBlue to-[#989FF8] text-white opacity-40 `
+              : `w-28 h-8 rounded-lg bg-gradient-to-b from-mainBlue to-[#989FF8] text-white hover:scale-95 transition-all duration-300`
           }
           onClick={() => handleClick()}
           disabled={!isUserValid}
