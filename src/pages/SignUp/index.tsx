@@ -1,10 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { setName } from '../../redux/SignUp/name-slice';
-import { useNameSelector } from '../../hooks/useAppSelector';
+import { useState } from 'react';
 
 const index = () => {
-  const user = useNameSelector((state) => state.name.value);
+  const [user, setUser] = useState<string>(() => {
+    const storedUsername = localStorage.getItem('username');
+    return storedUsername || '';
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -15,7 +18,10 @@ const index = () => {
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(setName(e.target.value));
+    const { value } = e.target;
+    setUser(value);
+    dispatch(setName(value));
+    localStorage.setItem('username', value);
   };
 
   return (

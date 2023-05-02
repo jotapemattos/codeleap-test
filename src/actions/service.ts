@@ -24,7 +24,7 @@ export const postPosts = async (post: PostState) => {
 
 export const getPosts = async (setData: DataProps['setData']) => {
   await axios
-    .get('https://dev.codeleap.co.uk/careers/?format=json&limit=10&offset=0')
+    .get(`https://dev.codeleap.co.uk/careers/?format=json&limit=10&offset=0`)
     .then((response) => setData(response.data.results));
 };
 

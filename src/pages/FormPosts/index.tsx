@@ -9,6 +9,7 @@ const FormPosts = () => {
       </header>
       <Form />
       <PostsCards />
+      <div></div>
     </div>
   );
 };

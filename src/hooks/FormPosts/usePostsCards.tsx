@@ -1,15 +1,22 @@
 import { useEffect, useState } from 'react';
 import { Data, getPosts } from '../../actions/service';
-import { useNameSelector } from '../useAppSelector';
+import { setName } from '../../redux/SignUp/name-slice';
+import { useDispatch } from 'react-redux';
 
 export const usePostsCards = () => {
-  const username = useNameSelector((state) => state.name.value);
+  const dispatch = useDispatch();
+  const username = localStorage.getItem('username');
   const [data, setData] = useState<Data[] | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const [deleteId, setDeleteId] = useState(0);
   const [updateId, setUpdateId] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const now = new Date().toISOString();
+
+  if (username) {
+    dispatch(setName(username));
+  }
+
   useEffect(() => {
     getPosts(setData);
   }, [data]);
